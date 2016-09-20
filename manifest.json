@@ -3,5 +3,6 @@
     "description": "This plugin allow application administrators to create their own custom data types. Once a type is created, a list is automatically created to access it and a form to edit each element of this type.\r\n\r\nFor exemple, with this plugin, yuo could create your product stock, your providers and display all the providers that sale each product.",
     "version": "1.0.0",
     "author": "Elvyrra SAS",
-    "dependencies": []
+    "dependencies": [],
+    "logo" : "logo.png"
 }
