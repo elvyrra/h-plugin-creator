@@ -1,0 +1,97 @@
+permission-name-manage-collections = "Manage your collections types"
+manage-collections-menu-title = "Manage your collections"
+
+; Admin
+
+; Collection list
+admin-title = "Manage my collections"
+collections-list-name-label = "Collection name"
+collections-list-table-label = "The table containing the data"
+collections-list-menu-label = "Accessible from the menu ?"
+collections-list-new-btn = "New collection"
+
+; Collection form
+collection-form-global-legend = "Global data"
+collection-form-name-label = "Collection name (no space)"
+collection-form-menu-label = "Menu to access the collection ?"
+collection-form-menu-title-label = "The title in the menu"
+
+collection-form-fields-legend = "Fields"
+new-field-btn = "Add a field"
+fields-list-name-label = "Field name"
+fields-list-type-label = "Data type"
+fields-list-type-text = "Text"
+field-maxlength-label = "Max length"
+fields-list-type-integer = "Integer number"
+fields-list-type-float = "Float number"
+field-decimals-label = "Number of decimals"
+fields-list-type-boolean = "True / false"
+fields-list-type-date = "Date"
+
+fields-list-description-label = "Label"
+fields-list-param-label = "Parameters"
+fields-list-unique-label = "Unique"
+fields-list-unique-explication = "This property defines if the value of this field must be unique for every record in the collection"
+fields-list-delete-title = "Delete the field"
+fields-list-id-description = "Unique identifier of a register in the collection"
+
+; Field form
+field-form-title = "Create / Edit a form of the collection"
+field-form-global-legend = "General information"
+field-form-name-label = "Field name"
+field-form-type-label = "Data type"
+field-form-type-text = "Text"
+field-form-type-boolean = "True / False"
+field-form-type-integer = "Integer number"
+field-form-type-float = "Float number"
+field-form-type-date = "Date"
+field-form-description-label = "Label"
+field-form-decimals-label = "Number of decimals"
+field-form-maxlength-label = "Max length"
+field-form-unique-label = "Unique ?"
+field-form-form-parameters-legend = "Define the how to define this field in a form"
+field-form-inputType-label = "Input type"
+field-form-inputType-text = "Text"
+field-form-inputType-radio = "Radio buttons"
+field-form-inputType-select = "Select box"
+field-form-inputType-checkbox = "Checbox"
+field-form-inputType-datetime = "Date input"
+field-form-inputType-number = "Number input"
+field-form-required-label = "Required ?"
+field-form-options-label = "Possible values"
+field-form-number-minimum-label = "Minimal value"
+field-form-number-maximum-label = "Maximal value"
+field-form-date-minimum-label = "Minimal date"
+field-form-date-maximum-label = "Maximal date"
+
+
+delete-field-confirmation = "do you really want to delete this field from your collection ?"
+
+; List options
+collection-form-list-options-legend = "List options"
+collection-form-list-fields-legend = "Choose the fields to display"
+collection-form-list-controls-legend = "Options"
+collection-form-list-options-new-btn = "Add a button to create a new register"
+collection-form-list-options-refresh-btn = "Add a button to refresh the list"
+collection-form-list-options-page-title-label = "The title of the list"
+collection-form-list-options-page-icon-label = "Choose the icon for the page"
+
+; Form options
+collection-form-form-options-legend = "Form options"
+collection-form-form-options-title-label = "Title of the form"
+collection-form-form-options-page-icon-label = "Choose the icon for the form page"
+collection-form-form-options-dialog-label = "Display the form in a dialog box ?"
+
+
+
+; Privileges
+collection-form-privileges-legend = "Privileges"
+collection-form-privileges-role-label = "Role"
+collection-form-privileges-read-label = "Read data"
+collection-form-privileges-write-label = "Create / modify records"
+collection-form-privileges-delete-label = "Delete records"
+
+
+; Records list
+records-list-new-button = "Add"
+confirm-record-delete = "Do you really want to delete this record ? This operation is not reversible"
