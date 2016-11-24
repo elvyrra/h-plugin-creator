@@ -1,9 +1,7 @@
-/* global app, $, Lang */
-
 'use strict';
 
-(function() {
-    const listId = $('.list-wrapper', app.tabset.activeTab().content()).attr('id');
+require(['app', 'jquery', 'lang'], function(app, $, Lang) {
+    const listId = $('.list-wrapper', app.tabset.activeTab.content).attr('id');
 
     $(`#${listId}`).on('click', '.delete-record', function() {
         if(confirm(Lang.get('h-plugin-creator.confirm-record-delete'))) {
@@ -27,4 +25,4 @@
             });
         }
     });
-})();
+});

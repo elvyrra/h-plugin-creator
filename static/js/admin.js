@@ -1,20 +1,7 @@
-/* global app, Lang */
-
 'use strict';
 
-require.config({
-    paths : {
-        emv : '/static/plugins/h-plugin-creator/js/emv'
-    },
-    shim : {
-        emv : {
-            exports : 'EMV'
-        }
-    }
-});
-
-require(['emv', 'jquery'], function(EMV, $) {
-    const formId = $('.h-plugin-creator-collection-form', app.tabset.activeTab().content()).attr('id');
+require(['emv', 'jquery', 'app', 'lang'], function(EMV, $, app, Lang) {
+    const formId = $('.h-plugin-creator-collection-form', app.tabset.activeTab.content).attr('id');
     const form = app.forms[formId];
     const rootElement = form.node.parents('.no-sidebar-tab').first();
 
@@ -421,8 +408,6 @@ require(['emv', 'jquery'], function(EMV, $) {
     }
 
     collection = new Collection();
-
-    window.collection = collection;
 
     collection.$apply(form.node.get(0));
 

@@ -77,7 +77,7 @@ class AdminController extends Controller{
         $iconOptions = array();
 
         foreach($allIcons as $name => $code) {
-            $iconOptions[$name] = '&#x' . $code . ' ' . $name;
+            $iconOptions[$name] = '&#x' . $code . '&#9;' . $name;
         }
 
 
@@ -259,7 +259,6 @@ class AdminController extends Controller{
         ));
 
         if(!$form->submitted()) {
-            $emv = $this->getPlugin()->getJsUrl('emv.js');
             $this->addJavaScript($this->getPlugin()->getJsUrl('admin.js'));
 
             $this->addCss($this->getPlugin()->getCssUrl('admin.less'));
