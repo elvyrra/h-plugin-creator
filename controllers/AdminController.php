@@ -462,15 +462,21 @@ class AdminController extends Controller{
                                 'action' => 'h-plugin-creator-records',
                                 'actionParameters' => array(
                                     'collection' => $collection->name,
-                                )
+                                ),
+                                'icon' => $form->getData('listIcon')
                             ));
                         }
-                    }
-                    else {
-                        if($menu) {
-                            $menu->delete();
+                        else {
+                            $menu->labelKey = $form->getData('menuTitle');
+                            $menu->icon = $form->getData('listIcon');
+
+                            $menu->save();
                         }
                     }
+                    elseif($menu) {
+                        $menu->delete();
+                    }
+
                     return $form->response(Form::STATUS_SUCCESS);
                 }
             }
