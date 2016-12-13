@@ -264,6 +264,7 @@ class AdminController extends Controller{
             $this->addCss($this->getPlugin()->getCssUrl('admin.less'));
 
             $this->addkeysToJavaScript(
+                $this->_plugin . '.field-form-id-description',
                 $this->_plugin . '.fields-list-type-text',
                 $this->_plugin . '.fields-list-type-boolean',
                 $this->_plugin . '.fields-list-type-integer',
@@ -496,10 +497,6 @@ class AdminController extends Controller{
     public function editField() {
         $form = new Form(array(
             'id' => $this->_plugin . '-collection-field-form',
-            'attributes' => array(
-                'e-with' => 'clone',
-                // 'e-submit' => '$parent.validEdition.bind($parent)'
-            ),
             'fieldsets' => array(
                 'form' => array(
                     new TextInput(array(
@@ -526,7 +523,7 @@ class AdminController extends Controller{
                         'label' => Lang::get($this->_plugin . '.field-form-type-label'),
                         'attributes' => array(
                             'e-value' => 'type',
-                            'e-change' => '$parent.changeInputType'
+                            'e-change' => '$root.changeInputType'
                         )
                     )),
 
@@ -575,7 +572,7 @@ class AdminController extends Controller{
                         'label' => Lang::get($this->_plugin . '.field-form-inputType-label'),
                         'required' => true,
                         'attributes' => array(
-                            'e-options' => '{$data : $parent.getInputTypeOptions(type), $value : "value", $label : "label", $selected: inputType}',
+                            'e-options' => '{$data : $root.getInputTypeOptions(type), $value : "value", $label : "label", $selected: inputType}',
                             'e-value' => 'inputType'
                         )
                     )),
@@ -638,7 +635,7 @@ class AdminController extends Controller{
                         'name' => 'cancel',
                         'value' => Lang::get('main.cancel-button'),
                         'attributes' => array(
-                            'e-click' => '$parent.cancelEdition.bind($parent)'
+                            'e-click' => '$root.cancelEdition.bind($root)'
                         )
                     ))
                 )

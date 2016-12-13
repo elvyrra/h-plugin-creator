@@ -14,20 +14,6 @@ require(['emv', 'jquery', 'app', 'lang'], function(EMV, $, app, Lang) {
     let collection;
 
     /**
-     * Generate a unique id
-     * @returns {[type]} [description]
-     */
-    function guid() {
-        const s4 = () => {
-            return Math.floor((1 + Math.random()) * 0x10000)
-                .toString(16)
-                .substring(1);
-        };
-
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-    }
-
-    /**
      * This class describes the collection field behavior
      */
     class Field extends EMV {
@@ -36,7 +22,7 @@ require(['emv', 'jquery', 'app', 'lang'], function(EMV, $, app, Lang) {
          * @param  {Object} data The initial data of the field
          */
         constructor(data) {
-            data.uid = guid();
+            data.uid = EMV.utils.uid();
             data.editing = false;
 
             // The clone used during edition
@@ -46,6 +32,10 @@ require(['emv', 'jquery', 'app', 'lang'], function(EMV, $, app, Lang) {
 
             if(!data.decimals) {
                 data.decimals = 2;
+            }
+
+            if(!data.list) {
+                data.list = undefined;
             }
 
             super({
@@ -109,29 +99,26 @@ require(['emv', 'jquery', 'app', 'lang'], function(EMV, $, app, Lang) {
 
             this.$clean();
 
-            this.clone = {};
-            this.constructor.inputs.forEach((key) => {
-                this.clone[key] = this[key];
-            });
+            this.clone = new Field(this);
 
             // Add a defaul option (visual)
-            if(!this.options.length) {
-                this.addOption();
+            if(!this.clone.options.length) {
+                this.clone.addOption();
             }
 
             app.dialog(app.getUri('h-plugin-creator-edit-collection-field'))
 
-            .done(function() {
+            .done(() => {
                 const form = app.forms['h-plugin-creator-collection-field-form'];
 
-                form.submit = function() {
+                form.submit = () => {
                     this.validEdition.call(this);
 
                     return false;
-                }.bind(this);
+                };
 
-                this.$apply(form.node.get(0));
-            }.bind(this));
+                this.clone.$apply(form.node.get(0));
+            });
         }
 
         /**
@@ -205,7 +192,7 @@ require(['emv', 'jquery', 'app', 'lang'], function(EMV, $, app, Lang) {
          * Add an option for a select or radio box input
          */
         addOption() {
-            this.clone.options.push({
+            this.options.push({
                 value : '',
                 label : ''
             });
@@ -216,7 +203,7 @@ require(['emv', 'jquery', 'app', 'lang'], function(EMV, $, app, Lang) {
          * @param  {integer} index The index of the option to delete
          */
         deleteOption(index) {
-            this.clone.options.splice(index, 1);
+            this.options.splice(index, 1);
         }
     }
 
@@ -410,6 +397,8 @@ require(['emv', 'jquery', 'app', 'lang'], function(EMV, $, app, Lang) {
     collection = new Collection();
 
     collection.$apply(form.node.get(0));
+
+    window.collection = collection;
 
     const origSubmit = form.submit;
 

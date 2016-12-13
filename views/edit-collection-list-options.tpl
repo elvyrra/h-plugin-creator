@@ -18,7 +18,7 @@
                         <span class="field-name">${name}</span>
 
                         <div class="pull-right up-down-buttons">
-                            {button icon='chevron-up' e-click="$root.upFieldInList.bind($root)" e-disabled="$index === 0"}
+                            {button icon='chevron-up' e-click="$root.upFieldInList.bind($root)" e-disabled="$index === $root.fieldsInList.length - $root.fieldsInList.length"}
                             {button icon='chevron-down' e-click="$root.downFieldInList.bind($root)" e-disabled="$index === $root.fieldsInList.length - 1"}
                         </div>
                     </li>
