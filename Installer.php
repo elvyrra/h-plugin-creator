@@ -43,7 +43,8 @@ class Installer extends PluginInstaller{
             'name' => 'manage-collections',
             'parentId' => MenuItem::ADMIN_ITEM_ID,
             'labelKey' => $this->_plugin . '.manage-collections-menu-title',
-            'action' => $this->_plugin . '-manage-collections'
+            'action' => $this->_plugin . '-manage-collections',
+            'icon'     => 'list'
         ));
     }
 
