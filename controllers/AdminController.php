@@ -80,7 +80,6 @@ class AdminController extends Controller{
             $iconOptions[$name] = '&#x' . $code . '&#9;' . $name;
         }
 
-
         $form = new Form(array(
             'id' => 'h-plugin-creator-collection-form-' . $this->collectionId,
             'class' => 'h-plugin-creator-collection-form',
@@ -108,18 +107,19 @@ class AdminController extends Controller{
 
                     new HiddenInput(array(
                         'name' => 'listOptions',
-                        'default' => '{}',
+                        'default' => '{"newButton":false,"refreshButton":false,"pageTitle":"Titre","pageIcon":"adjust"}',
                         'attributes' => array(
                             'e-value' => 'listOptions.toString()'
                         )
                     )),
                     new HiddenInput(array(
                         'name' => 'formOptions',
-                        'default' => '{}',
+                        'default' => '{"title":"Edit","icon":"adjust","dialog":false}',
                         'attributes' => array(
                             'e-value' => 'formOptions.toString()'
                         )
                     )),
+
                     new HiddenInput(array(
                         'name' => 'privileges',
                         'default' => json_encode(array(
@@ -360,6 +360,9 @@ class AdminController extends Controller{
                     return $form->response(Form::STATUS_SUCCESS);
                 }
                 elseif($form->check()) {
+
+                    
+
                     // Register the collection parameters
                     $form->register(Form::NO_EXIT);
 
@@ -450,6 +453,17 @@ class AdminController extends Controller{
                         $class::updateTable();
                     }
 
+                    $menuParent = MenuItem::getByName($this->_plugin . '.main');
+
+                    if(!$menuParent)
+                        $menuParent = MenuItem::add(array(
+                            'plugin' => $this->_plugin,
+                            'name' => 'main',
+                            'labelKey' => 'Listes',
+                            'icon' => 'list-o',
+                            'active' => 1
+                        ));
+
                     // Create the menu to access the collection
                     $menu = MenuItem::getByName($this->_plugin . '.records-' . $collection->name);
 
@@ -464,6 +478,7 @@ class AdminController extends Controller{
                                 'actionParameters' => array(
                                     'collection' => $collection->name,
                                 ),
+                                'parentId' => $menuParent->id,
                                 'icon' => $form->getData('listIcon')
                             ));
                         }

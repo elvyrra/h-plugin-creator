@@ -33,7 +33,10 @@ App::router()->prefix('/h-plugin-creator', function() {
 
                 $collection = Collection::getByName($route->getData('collection'));
 
-                return $collection->canRead();
+                if($collection)
+                    return $collection->canRead();
+
+                return null;
             },
             'where' => array(
                 'collection' => '\w+'
